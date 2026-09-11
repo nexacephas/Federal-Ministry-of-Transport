@@ -7,6 +7,7 @@ import OnlineServices from './components/OnlineServices/OnlineServices';
 import StatsCounters from './components/StatsCounters/StatsCounters';
 import AgenciesShowcase from './components/AgenciesShowcase/AgenciesShowcase';
 import Footer from './components/Footer/Footer';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <StatsCounters />
       <AgenciesShowcase />
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
