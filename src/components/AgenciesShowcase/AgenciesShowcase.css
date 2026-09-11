@@ -3,6 +3,12 @@
   overflow: hidden;
   padding: 120px 0 125px;
   background:
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(247, 249, 248, 0.8) 55%,
+      rgba(234, 247, 241, 0.78)
+    ),
     radial-gradient(
       circle at 88% 20%,
       rgba(46, 139, 87, 0.08),
@@ -20,6 +26,18 @@
   left: 50%;
   width: 1px;
   background: rgba(15, 76, 129, 0.045);
+  pointer-events: none;
+}
+
+.agencies::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 79, 48, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 79, 48, 0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.5;
   pointer-events: none;
 }
 
@@ -134,6 +152,7 @@
 
 .agencies__card {
   position: relative;
+  isolation: isolate;
   min-height: 315px;
   padding: 28px;
   display: flex;
@@ -197,6 +216,37 @@
   transform: scaleX(1);
 }
 
+.agencies__card:first-child {
+  color: var(--color-white);
+  background:
+    linear-gradient(145deg, rgba(19, 45, 38, 0.98), rgba(0, 79, 48, 0.98)),
+    var(--color-navy-soft);
+  border-color: rgba(201, 162, 39, 0.35);
+  box-shadow:
+    0 18px 42px rgba(0, 79, 48, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.agencies__card:first-child::before {
+  right: 28px;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold),
+    rgba(201, 162, 39, 0)
+  );
+  transform: scaleX(1);
+}
+
+.agencies__card:first-child:hover {
+  background:
+    linear-gradient(145deg, rgba(19, 45, 38, 1), rgba(0, 107, 64, 1)),
+    var(--color-navy-soft);
+  border-color: rgba(201, 162, 39, 0.62);
+  box-shadow:
+    0 24px 52px rgba(0, 79, 48, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
 .agencies__card-top {
   display: flex;
   align-items: center;
@@ -248,6 +298,28 @@
   transform: translateY(-2px);
 }
 
+.agencies__card:first-child .agencies__number {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.agencies__card:first-child .agencies__code {
+  color: var(--color-gold-light);
+  background: rgba(201, 162, 39, 0.14);
+  border-color: rgba(201, 162, 39, 0.3);
+}
+
+.agencies__card:first-child .agencies__icon {
+  color: var(--color-gold-light);
+  background: rgba(201, 162, 39, 0.14);
+  border-color: rgba(201, 162, 39, 0.28);
+}
+
+.agencies__card:first-child:hover .agencies__icon {
+  color: var(--color-navy);
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
 .agencies__content {
   margin-top: 22px;
 }
@@ -266,6 +338,14 @@
 
 .agencies__card:hover .agencies__name {
   color: var(--color-primary);
+}
+
+.agencies__card:first-child .agencies__name {
+  color: var(--color-white);
+}
+
+.agencies__card:first-child:hover .agencies__name {
+  color: var(--color-gold-light);
 }
 
 .agencies__description {
@@ -312,6 +392,29 @@
   background: var(--color-primary);
   border-color: var(--color-primary);
   transform: translate(2px, -2px);
+}
+
+.agencies__card:first-child .agencies__description,
+.agencies__card:first-child .agencies__footer {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.agencies__card:first-child .agencies__arrow {
+  color: var(--color-gold-light);
+  background: transparent;
+  border-color: rgba(201, 162, 39, 0.38);
+}
+
+.agencies__card:first-child:hover .agencies__arrow {
+  color: var(--color-navy);
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.agencies__card:focus-visible,
+.agencies__see-all:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 4px;
 }
 
 
