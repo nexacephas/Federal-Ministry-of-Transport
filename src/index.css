@@ -1,0 +1,656 @@
+/* ==========================================================================
+   index.css — Global Design System
+   Federal Ministry of Transportation — Premium Redesign
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     Brand
+     ------------------------------------------------------------------------ */
+
+  --color-primary: #008751;
+  --color-primary-dark: #006b40;
+  --color-primary-deep: #004f30;
+  --color-primary-light: #eaf7f1;
+  --color-primary-soft: #f3faf7;
+
+  /* Institutional / Dark */
+  --color-navy: #0b1f1a;
+  --color-navy-soft: #132d26;
+  --color-dark: #111817;
+
+  /* Accent */
+  --color-gold: #c9a227;
+  --color-gold-light: #f7f0d7;
+
+  /* ------------------------------------------------------------------------
+     Neutrals
+     ------------------------------------------------------------------------ */
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-text: #17201d;
+  --color-text-secondary: #3f4b47;
+  --color-text-muted: #68736f;
+  --color-text-subtle: #8b9491;
+
+  --color-border: #e4e9e7;
+  --color-border-light: #edf1ef;
+  --color-border-dark: #cfd7d3;
+
+  --color-bg: #ffffff;
+  --color-bg-soft: #f7f9f8;
+  --color-bg-alt: #f3f6f4;
+
+  /* ------------------------------------------------------------------------
+     Feedback
+     ------------------------------------------------------------------------ */
+
+  --color-success: #168653;
+  --color-error: #c0392b;
+  --color-warning: #c58a00;
+  --color-info: #2563eb;
+
+  /* ------------------------------------------------------------------------
+     Typography
+     ------------------------------------------------------------------------ */
+
+  --font-heading:
+    "Inter",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --font-body:
+    "Inter",
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: 3rem;
+  --fs-4xl: 4rem;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.3;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.7;
+
+  /* ------------------------------------------------------------------------
+     Spacing
+     ------------------------------------------------------------------------ */
+
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-7: 3rem;      /* 48px */
+  --space-8: 4rem;      /* 64px */
+  --space-9: 6rem;      /* 96px */
+  --space-10: 8rem;     /* 128px */
+
+  /* ------------------------------------------------------------------------
+     Layout
+     ------------------------------------------------------------------------ */
+
+  --container-max: 1280px;
+
+  --container-padding: clamp(
+    1rem,
+    3vw,
+    2rem
+  );
+
+  /* ------------------------------------------------------------------------
+     Radius
+     ------------------------------------------------------------------------ */
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* ------------------------------------------------------------------------
+     Shadows
+     ------------------------------------------------------------------------ */
+
+  --shadow-xs:
+    0 1px 2px rgba(16, 24, 20, 0.04);
+
+  --shadow-sm:
+    0 2px 8px rgba(16, 24, 20, 0.06);
+
+  --shadow-md:
+    0 8px 24px rgba(16, 24, 20, 0.08);
+
+  --shadow-lg:
+    0 16px 40px rgba(16, 24, 20, 0.10);
+
+  --shadow-xl:
+    0 24px 60px rgba(16, 24, 20, 0.14);
+
+  /* ------------------------------------------------------------------------
+     Motion
+     ------------------------------------------------------------------------ */
+
+  --ease-standard: cubic-bezier(0.2, 0.65, 0.3, 1);
+
+  --transition-fast:
+    160ms var(--ease-standard);
+
+  --transition-base:
+    240ms var(--ease-standard);
+
+  --transition-slow:
+    400ms var(--ease-standard);
+
+  /* ------------------------------------------------------------------------
+     Breakpoints
+     ------------------------------------------------------------------------ */
+
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+}
+
+
+/* ==========================================================================
+   2. RESET
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-width: 320px;
+
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+
+  color: var(--color-text);
+  background-color: var(--color-bg);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+textarea {
+  resize: vertical;
+}
+
+::selection {
+  color: var(--color-white);
+  background: var(--color-primary);
+}
+
+
+/* ==========================================================================
+   3. TYPOGRAPHY
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-tight);
+
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, var(--fs-4xl));
+}
+
+h2 {
+  font-size: clamp(1.875rem, 4vw, var(--fs-3xl));
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, var(--fs-2xl));
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2vw, var(--fs-xl));
+}
+
+h5 {
+  font-size: var(--fs-lg);
+}
+
+h6 {
+  font-size: var(--fs-md);
+}
+
+p {
+  color: var(--color-text-secondary);
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-subtle {
+  color: var(--color-text-subtle);
+}
+
+.text-sm {
+  font-size: var(--fs-sm);
+}
+
+.text-xs {
+  font-size: var(--fs-xs);
+}
+
+.text-lg {
+  font-size: var(--fs-lg);
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+/* ==========================================================================
+   4. LAYOUT
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+
+  margin-inline: auto;
+
+  padding-inline: var(--container-padding);
+}
+
+.section {
+  padding-block: clamp(
+    4rem,
+    8vw,
+    7rem
+  );
+}
+
+.section-sm {
+  padding-block: var(--space-7);
+}
+
+.section-lg {
+  padding-block: var(--space-10);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+
+/* ==========================================================================
+   5. SURFACES
+   ========================================================================== */
+
+.surface {
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+}
+
+.surface-soft {
+  background: var(--color-bg-soft);
+}
+
+.surface-dark {
+  color: var(--color-white);
+  background: var(--color-navy);
+}
+
+
+/* ==========================================================================
+   6. BUTTONS
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--space-2);
+
+  min-height: 44px;
+
+  padding: 0.7rem 1.25rem;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+
+  white-space: nowrap;
+
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  color: var(--color-white);
+  background: var(--color-primary);
+
+  box-shadow:
+    0 4px 12px rgba(0, 135, 81, 0.18);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+
+  box-shadow:
+    0 6px 18px rgba(0, 135, 81, 0.24);
+}
+
+.btn-secondary {
+  color: var(--color-navy);
+  background: var(--color-white);
+  border-color: var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-bg-soft);
+  border-color: var(--color-border-dark);
+}
+
+.btn-outline {
+  color: var(--color-primary);
+  background: transparent;
+  border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  color: var(--color-primary-dark);
+  background: var(--color-primary-light);
+}
+
+.btn-dark {
+  color: var(--color-white);
+  background: var(--color-navy);
+}
+
+.btn-dark:hover {
+  background: var(--color-navy-soft);
+}
+
+
+/* ==========================================================================
+   7. COMMON COMPONENT UTILITIES
+   ========================================================================== */
+
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-xs);
+
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-border);
+
+  box-shadow: var(--shadow-md);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 0.35rem 0.7rem;
+
+  border-radius: var(--radius-full);
+
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+}
+
+.badge-primary {
+  color: var(--color-primary-dark);
+  background: var(--color-primary-light);
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border-light);
+}
+
+
+/* ==========================================================================
+   8. ACCESSIBILITY
+   ========================================================================== */
+
+:focus-visible {
+  outline: 3px solid rgba(0, 135, 81, 0.35);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  padding: 0;
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+
+  border: 0;
+}
+
+
+/* ==========================================================================
+   9. RESPONSIVE GRID
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .section {
+    padding-block: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+
+/* ==========================================================================
+   10. REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
