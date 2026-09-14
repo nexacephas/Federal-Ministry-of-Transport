@@ -1,6 +1,7 @@
 // src/components/Header/Header.jsx
 
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import './Header.css';
 
@@ -8,6 +9,7 @@ import logo from '../../assets/coat-of-arms.png';
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
+  { label: 'FCSSIP', href: '#fcssip' },
   { label: 'Departments', href: '#departments' },
   { label: 'News & Events', href: '#news' },
   { label: 'E-Services', href: '#services' },
@@ -15,8 +17,11 @@ const NAV_LINKS = [
 ];
 
 function Header() {
+  const { pathname } = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleRef = useRef(null);
+  const navRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +35,34 @@ function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen) return undefined;
+
+    const handlePointerDown = (event) => {
+      if (
+        !navRef.current?.contains(event.target) &&
+        !toggleRef.current?.contains(event.target)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('pointerdown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
   const handleNavClick = () => {
     setIsMenuOpen(false);
   };
@@ -39,8 +72,8 @@ function Header() {
       <div className="header__inner">
 
         {/* Brand */}
-        <a
-          href="/"
+        <Link
+          to="/"
           className="header__brand"
           onClick={handleNavClick}
         >
@@ -59,10 +92,11 @@ function Header() {
               Ministry of Transportation
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Navigation */}
         <nav
+          ref={navRef}
           id="main-navigation"
           className={`header__nav ${
             isMenuOpen ? 'header__nav--open' : ''
@@ -72,7 +106,7 @@ function Header() {
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={pathname === '/' ? link.href : `/${link.href}`}
               className="header__link"
               onClick={handleNavClick}
             >
@@ -85,7 +119,7 @@ function Header() {
         <div className="header__actions">
 
           <a
-            href="#services"
+            href={pathname === '/' ? '#services' : '/#services'}
             className="header__cta"
             onClick={handleNavClick}
           >
@@ -93,6 +127,7 @@ function Header() {
           </a>
 
           <button
+            ref={toggleRef}
             type="button"
             className={`header__toggle ${
               isMenuOpen ? 'header__toggle--open' : ''

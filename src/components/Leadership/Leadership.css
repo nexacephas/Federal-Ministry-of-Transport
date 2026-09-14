@@ -1,136 +1,171 @@
-/* ==========================================================================
-   Leadership.css
-   ========================================================================== */
+/* =========================================================
+   LEADERSHIP
+   ========================================================= */
 
 .leadership {
+  position: relative;
   padding: 110px 0;
   background: var(--color-white);
+  overflow: hidden;
 }
 
 .leadership__inner {
-  width: min(100% - 40px, var(--container-max));
+  width: min(calc(100% - 40px), var(--container-max));
   margin: 0 auto;
 }
 
-.leadership__header {
-  max-width: 700px;
-  margin-bottom: 48px;
+/* ---------------------------------------------------------
+   HEADER
+   --------------------------------------------------------- */
 
-  animation: leadershipFadeUp 700ms ease both;
+.leadership__header {
+  max-width: 760px;
+  margin-bottom: 56px;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: leadershipFadeUp 0.8s ease forwards;
 }
 
 .leadership__eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-
-  margin-bottom: 14px;
+  gap: 10px;
+  margin-bottom: 18px;
 
   color: var(--color-primary);
-
-  font-size: 0.7rem;
-  font-weight: var(--fw-semibold);
-
+  font-size: 0.76rem;
+  font-weight: var(--fw-bold);
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
 
 .leadership__eyebrow::before {
   content: '';
-
   width: 28px;
-  height: 1px;
-
+  height: 2px;
   background: var(--color-primary);
+  border-radius: 999px;
 }
 
 .leadership__heading {
-  max-width: 15ch;
-
-  margin: 0 0 18px;
+  max-width: 14ch;
+  margin: 0 0 20px;
 
   color: var(--color-navy);
-
-  font-size: clamp(2.2rem, 4vw, 3.8rem);
-  font-weight: var(--fw-bold);
-
+  font-size: clamp(2.2rem, 4vw, 3.7rem);
   line-height: 1.04;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
+  font-weight: var(--fw-bold);
 }
 
 .leadership__intro {
-  max-width: 58ch;
-
+  max-width: 680px;
   margin: 0;
 
   color: var(--color-text-secondary);
-
-  font-size: 0.98rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
+.leadership__hierarchy-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 25px;
+  padding-bottom: 6px;
+  color: var(--color-primary);
+  border-bottom: 1px solid rgba(0, 135, 81, 0.3);
+  font-size: 0.78rem;
+  font-weight: var(--fw-semibold);
+  transition: color var(--transition-fast), border-color var(--transition-fast), gap var(--transition-fast);
+}
+
+.leadership__hierarchy-link:hover {
+  gap: 13px;
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary);
+}
+
+/* ---------------------------------------------------------
+   PROFILE
+   --------------------------------------------------------- */
+
 .leadership__grid {
-  display: grid;
-
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 24px;
+  display: flex;
+  justify-content: center;
 }
 
 .leadership__card {
-  overflow: hidden;
-
-  background: var(--color-white);
-
-  border: 1px solid rgba(0, 0, 0, 0.07);
-
-  border-radius: 18px;
-
-  box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.05);
-
-  opacity: 0;
-
-  animation: leadershipCardFade 700ms ease forwards;
-
-  transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base),
-    border-color var(--transition-base);
-}
-
-.leadership__card:nth-child(1) {
-  animation-delay: 180ms;
-}
-
-.leadership__card:nth-child(2) {
-  animation-delay: 320ms;
-}
-
-.leadership__card:hover {
-  transform: translateY(-5px);
-
-  border-color: rgba(0, 135, 81, 0.18);
-
-  box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.09);
-}
-
-.leadership__photo-wrap {
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(320px, 1.05fr);
 
   width: 100%;
-
-  aspect-ratio: 16 / 10;
+  max-width: 1080px;
+  min-height: 480px;
 
   overflow: hidden;
 
   background:
     linear-gradient(
       135deg,
-      #e8f3ed,
-      #f4f6f5
+      #ffffff 0%,
+      #f9fbfa 100%
     );
+
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+
+  box-shadow:
+    0 18px 50px rgba(10, 35, 25, 0.07),
+    0 4px 14px rgba(10, 35, 25, 0.04);
+
+  opacity: 0;
+  transform: translateY(28px);
+
+  animation: leadershipFadeUp 0.85s 0.15s ease forwards;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.leadership__card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(0, 135, 81, 0.22);
+
+  box-shadow:
+    0 24px 65px rgba(10, 35, 25, 0.1),
+    0 6px 18px rgba(10, 35, 25, 0.05);
+}
+
+/* ---------------------------------------------------------
+   PHOTO
+   --------------------------------------------------------- */
+
+.leadership__photo-wrap {
+  position: relative;
+  min-height: 480px;
+  overflow: hidden;
+  background: #e9eeeb;
+}
+
+.leadership__photo-wrap::after {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 55%,
+      rgba(0, 30, 20, 0.08) 100%
+    );
+
+  pointer-events: none;
 }
 
 .leadership__photo {
@@ -140,52 +175,103 @@
   display: block;
 
   object-fit: cover;
+  object-position: center top;
 
-  object-position: center 20%;
-
-  transition:
-    transform 500ms ease;
+  transition: transform 0.6s ease;
 }
 
 .leadership__card:hover .leadership__photo {
   transform: scale(1.025);
 }
 
+/* ---------------------------------------------------------
+   INFORMATION
+   --------------------------------------------------------- */
+
 .leadership__info {
-  padding: 22px 24px 25px;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 64px;
+}
+
+/* Green editorial accent */
+
+.leadership__info::before {
+  content: '';
+
+  position: absolute;
+  top: 64px;
+  left: 64px;
+
+  width: 42px;
+  height: 3px;
+
+  background: var(--color-primary);
+  border-radius: 999px;
+}
+
+.leadership__label {
+  margin-bottom: 26px;
+  padding-top: 24px;
+
+  color: var(--color-primary-dark);
+  font-size: 0.72rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .leadership__name {
-  margin: 0 0 7px;
+  margin: 0 0 12px;
 
   color: var(--color-navy);
-
-  font-size: 1.2rem;
-  font-weight: var(--fw-semibold);
-
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: var(--fw-bold);
 }
 
 .leadership__role {
   margin: 0;
 
   color: var(--color-primary);
-
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: var(--fw-semibold);
-
   line-height: 1.5;
 }
 
+/* ---------------------------------------------------------
+   SUBTLE DECORATION
+   --------------------------------------------------------- */
 
-/* ==========================================================================
-   Fade In Animation
-   ========================================================================== */
+.leadership__card::after {
+  content: '';
+
+  position: absolute;
+  right: -100px;
+  bottom: -130px;
+
+  width: 300px;
+  height: 300px;
+
+  border: 1px solid rgba(0, 135, 81, 0.07);
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------
+   ANIMATION
+   --------------------------------------------------------- */
 
 @keyframes leadershipFadeUp {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(24px);
   }
 
   to {
@@ -194,22 +280,36 @@
   }
 }
 
-@keyframes leadershipCardFade {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
+/* ---------------------------------------------------------
+   TABLET
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .leadership {
+    padding: 90px 0;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .leadership__card {
+    grid-template-columns: minmax(280px, 0.9fr) minmax(280px, 1.1fr);
+  }
+
+  .leadership__photo-wrap {
+    min-height: 430px;
+  }
+
+  .leadership__info {
+    padding: 48px;
+  }
+
+  .leadership__info::before {
+    top: 48px;
+    left: 48px;
   }
 }
 
-
-/* ==========================================================================
-   Responsive
-   ========================================================================== */
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
 
 @media (max-width: 700px) {
   .leadership {
@@ -217,54 +317,111 @@
   }
 
   .leadership__inner {
-    width: min(100% - 32px, var(--container-max));
+    width: min(calc(100% - 32px), var(--container-max));
   }
 
   .leadership__header {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
   }
 
   .leadership__heading {
-    max-width: 13ch;
-
-    font-size: clamp(2rem, 9vw, 2.8rem);
+    max-width: 17ch;
+    font-size: clamp(2rem, 9vw, 2.7rem);
   }
 
-  .leadership__grid {
-    grid-template-columns: 1fr;
+  .leadership__intro {
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
 
-    gap: 20px;
+  .leadership__card {
+    display: block;
+    min-height: auto;
+    border-radius: 20px;
   }
 
   .leadership__photo-wrap {
-    aspect-ratio: 16 / 11;
+    min-height: 420px;
+    height: 420px;
+  }
+
+  .leadership__info {
+    min-height: 300px;
+    padding: 52px 32px 40px;
+  }
+
+  .leadership__info::before {
+    top: 32px;
+    left: 32px;
+  }
+
+  .leadership__label {
+    margin-bottom: 22px;
+    padding-top: 22px;
+  }
+
+  .leadership__name {
+    font-size: clamp(2rem, 9vw, 2.7rem);
   }
 }
+
+/* ---------------------------------------------------------
+   SMALL MOBILE
+   --------------------------------------------------------- */
 
 @media (max-width: 480px) {
   .leadership {
     padding: 70px 0;
   }
 
+  .leadership__inner {
+    width: min(calc(100% - 24px), var(--container-max));
+  }
+
+  .leadership__eyebrow {
+    font-size: 0.68rem;
+  }
+
+  .leadership__heading {
+    font-size: 2rem;
+  }
+
+  .leadership__photo-wrap {
+    height: 350px;
+    min-height: 350px;
+  }
+
   .leadership__info {
-    padding: 18px 18px 21px;
+    padding: 48px 24px 34px;
+  }
+
+  .leadership__info::before {
+    left: 24px;
+  }
+
+  .leadership__label {
+    font-size: 0.66rem;
   }
 
   .leadership__name {
-    font-size: 1.05rem;
+    font-size: 1.95rem;
+  }
+
+  .leadership__role {
+    font-size: 0.92rem;
   }
 }
 
-
-/* ==========================================================================
-   Accessibility
-   ========================================================================== */
+/* ---------------------------------------------------------
+   REDUCED MOTION
+   --------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
   .leadership__header,
   .leadership__card {
-    animation: none;
     opacity: 1;
+    transform: none;
+    animation: none;
   }
 
   .leadership__card,

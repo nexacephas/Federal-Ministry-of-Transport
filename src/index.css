@@ -14,15 +14,15 @@
      ------------------------------------------------------------------------ */
 
   --color-primary: #008751;
-  --color-primary-dark: #006b40;
+  --color-primary-dark: #006241;
   --color-primary-deep: #004f30;
-  --color-primary-light: #eaf7f1;
+  --color-primary-light: #e6f4ee;
   --color-primary-soft: #f3faf7;
 
   /* Institutional / Dark */
-  --color-navy: #0b1f1a;
-  --color-navy-soft: #132d26;
-  --color-dark: #111817;
+  --color-navy: #07110d;
+  --color-navy-soft: #0b2118;
+  --color-dark: #101614;
 
   /* Accent */
   --color-gold: #c9a227;
@@ -35,18 +35,18 @@
   --color-white: #ffffff;
   --color-black: #000000;
 
-  --color-text: #17201d;
-  --color-text-secondary: #3f4b47;
-  --color-text-muted: #68736f;
-  --color-text-subtle: #8b9491;
+  --color-text: #101614;
+  --color-text-secondary: #65706b;
+  --color-text-muted: #65706b;
+  --color-text-subtle: #8a9691;
 
-  --color-border: #e4e9e7;
-  --color-border-light: #edf1ef;
-  --color-border-dark: #cfd7d3;
+  --color-border: #e1e7e4;
+  --color-border-light: #edf2ef;
+  --color-border-dark: #cfd9d4;
 
   --color-bg: #ffffff;
-  --color-bg-soft: #f7f9f8;
-  --color-bg-alt: #f3f6f4;
+  --color-bg-soft: #f6f8f7;
+  --color-bg-alt: #f6f8f7;
 
   /* ------------------------------------------------------------------------
      Feedback
@@ -196,6 +196,30 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  scrollbar-color: var(--color-primary) var(--color-bg-soft);
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--color-bg-soft);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border: 2px solid var(--color-bg-soft);
+  border-radius: var(--radius-full);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+html::-webkit-scrollbar-corner {
+  background: var(--color-bg-soft);
 }
 
 body {
@@ -218,6 +242,21 @@ input,
 textarea,
 select {
   -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 img,

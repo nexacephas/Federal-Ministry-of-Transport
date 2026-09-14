@@ -87,7 +87,6 @@ function Footer() {
     <footer
       ref={footerRef}
       className={`footer ${isVisible ? 'footer--visible' : ''}`}
-      id="contact"
     >
       <div className="footer__top-line" />
 

@@ -377,9 +377,9 @@
     flex-direction: column;
     align-items: stretch;
 
-    gap: 2px;
+    gap: 4px;
 
-    padding: 8px;
+    padding: 10px;
 
     margin: 0;
 
@@ -393,14 +393,16 @@
 
     transform: translateY(-8px);
 
-    background: rgba(255, 255, 255, 0.88);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.97), rgba(243, 250, 247, 0.94));
 
-    border: 1px solid rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 135, 81, 0.14);
 
-    border-radius: 16px;
+    border-radius: 18px;
 
     box-shadow:
-      0 15px 40px rgba(0, 0, 0, 0.12);
+      0 22px 55px rgba(10, 35, 25, 0.16),
+      0 4px 12px rgba(10, 35, 25, 0.06);
 
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -422,14 +424,81 @@
     transform: translateY(0);
   }
 
+  .header__nav::before {
+    content: 'Ministry navigation';
+
+    display: block;
+
+    padding: 5px 13px 9px;
+
+    color: var(--color-text-subtle);
+
+    border-bottom: 1px solid var(--color-border-light);
+
+    font-size: 0.58rem;
+    font-weight: var(--fw-semibold);
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+
   .header__link {
+    position: relative;
+
     width: 100%;
 
-    padding: 13px 14px;
+    min-height: 46px;
+
+    padding: 12px 38px 12px 14px;
 
     border-radius: 9px;
 
     font-size: 0.88rem;
+
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast),
+      padding-left var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .header__link::before {
+    content: '0' counter(nav-item);
+
+    position: absolute;
+    left: 14px;
+
+    color: var(--color-primary);
+
+    font-size: 0.58rem;
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.06em;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .header__link::after {
+    content: '\2197';
+
+    position: absolute;
+    right: 14px;
+
+    color: var(--color-text-subtle);
+
+    font-size: 0.9rem;
+    opacity: 0.65;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .header__link:nth-child(10n + 1) { counter-increment: nav-item; }
+  .header__link:nth-child(10n + 2) { counter-increment: nav-item; }
+  .header__link:nth-child(10n + 3) { counter-increment: nav-item; }
+  .header__link:nth-child(10n + 4) { counter-increment: nav-item; }
+  .header__link:nth-child(10n + 5) { counter-increment: nav-item; }
+  .header__link:nth-child(10n + 6) { counter-increment: nav-item; }
+
+  .header__nav {
+    counter-reset: nav-item;
   }
 
   .header__nav--open .header__link {
@@ -437,9 +506,22 @@
   }
 
   .header__link:hover {
-    padding-left: 17px;
+    padding-left: 38px;
+
+    transform: translateX(2px);
 
     background: rgba(0, 135, 81, 0.08);
+  }
+
+  .header__link:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .header__link:hover::after {
+    color: var(--color-primary);
+    opacity: 1;
+    transform: translate(2px, -2px);
   }
 
   .header__cta {
@@ -448,6 +530,28 @@
 
   .header__toggle {
     display: flex;
+
+    background: var(--color-white);
+    border-color: rgba(0, 135, 81, 0.18);
+    box-shadow: 0 4px 12px rgba(10, 35, 25, 0.08);
+
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .header__toggle:hover {
+    background: var(--color-primary-light);
+    border-color: rgba(0, 135, 81, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .header__toggle--open {
+    background: var(--color-primary-light);
+    border-color: rgba(0, 135, 81, 0.3);
+    box-shadow: none;
   }
 }
 
