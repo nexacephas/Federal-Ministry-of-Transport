@@ -3,7 +3,7 @@ import './IntroExperience.css';
 import coatOfArms from '../../assets/coat-of-arms.png';
 
 const INTRO_DURATION = 5200;
-const EXIT_DURATION = 900;
+const EXIT_DURATION = 1100;
 const SESSION_KEY = 'fmot-intro-seen';
 
 function IntroExperience() {

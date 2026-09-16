@@ -38,7 +38,7 @@
 
 .intro-experience--exiting {
   pointer-events: none;
-  animation: introExperienceOut 900ms cubic-bezier(0.76, 0, 0.24, 1) both;
+  animation: introExperienceOut 1100ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
 }
 
 /* --------------------------------------------------
@@ -1030,20 +1030,20 @@
 @keyframes introExperienceOut {
   0% {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0);
     filter: blur(0);
   }
 
-  45% {
-    opacity: 1;
-    transform: scale(1.015);
+  55% {
+    opacity: 0.92;
+    transform: translateY(-0.5%);
     filter: blur(0);
   }
 
   100% {
     opacity: 0;
-    transform: scale(1.045);
-    filter: blur(8px);
+    transform: translateY(-2%);
+    filter: blur(2px);
     visibility: hidden;
   }
 }
